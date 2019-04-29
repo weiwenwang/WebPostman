@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+    <script src="metismenu.js"></script>
+    <style type="text/css">
+        .vad { margin: 20px 0 5px; font-family: Consolas,arial,宋体,sans-serif; text-align:center;}
+        .vad a { display: inline-block; height: 36px; line-height: 36px; margin: 0 5px; padding: 0 50px; font-size: 14px; text-align:center; color:#eee; text-decoration: none; background-color: #222;}
+        .vad a:hover { color: #fff; background-color: #000;}
+        .thead { width: 728px; height: 90px; margin: 0 auto; border-bottom: 40px solid #fff;}
+    </style>
+    <script>
+        $(function() {
+
+            $('#menu').metisMenu();
+
+            $('#menu2').metisMenu({
+                toggle: false
+            });
+
+            $('#menu3').metisMenu({
+                doubleTapToGo: true
+            });
+        });
+        $('#menu').metisMenu();
+    </script>
+    <title>Document</title>
+</head>
+<body>
+<div>
+
+</div>
+</body>
+</html>
