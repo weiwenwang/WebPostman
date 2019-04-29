@@ -42,36 +42,77 @@
             </ul>
         </div>
         <div class="col-md-10">
-            <div class="row">
-                <div class="col-md-2">
-                    <select class="form-control" id="method" name="method">
-                        <option value="1">GET</option>
-                        <option value="2">POST</option>
-                    </select>
-                </div>
-                <div class="col-md-9">
-                    <input type="text" class="form-control"
-                           placeholder="Enter request URL" id="url">
-                </div>
-                <div class="col-md-1">
-                    <button type="submit" class="btn btn-default" id="send" onclick="sendClick()">Send</button>
-                </div>
+            <div class="row" id="search">
+                <select id="method">
+                    <option value="1">GET</option>
+                    <option value="2">POST</option>
+                </select>
+                <input type="text" value="12" id="url">
+                <input type="button" value="send" onclick="sendClick()">
+                <input type="button" value="save">
+            {{/*<div class="col-md-2" style="width: 200px;">*/}}
+            {{/*<div id="method-select-div">*/}}
+            {{/*<select id="method-select" id="method" name="method">*/}}
+            {{/*<option value="1">GET</option>*/}}
+            {{/*<option value="2">POST</option>*/}}
+            {{/*</select>*/}}
+            {{/*</div>*/}}
+            {{/*</div>*/}}
+            {{/*<div class="col-md-9">*/}}
+            {{/*<input type="text" class="form-control"*/}}
+            {{/*placeholder="Enter request URL" id="url">*/}}
+            {{/*</div>*/}}
+                {{/*<div class="col-md-1">*/}}
+                    {{/*<button type="submit" class="btn btn-default" id="send" onclick="sendClick()">Send</button>*/}}
+                {{/*</div>*/}}
             </div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8" style="overflow: hidden">
                     <pre id="json-renderer" style="padding-left:30px;margin-top: 20px;min-height: 400px;"></pre>
                 </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-3" style="margin-left: -100px;">
-                    <div class="row">
-                        <div class="header response-header">response header</div>
+
+                <div class="col-md-4" style="overflow: hidden; margin-top: 20px;">
+                    <div class="row" id="right">
+                    {{/*响应头*/}}
+                        <div class="row header" id="response-header">
+                            <div class="col-md-1"><span class="glyphicon glyphicon-triangle-right title-1"
+                                                        aria-hidden="true"></span></div>
+                            <div class="col-md-4">request header</div>
+                        </div>
                         <div class="row" id="response-content">
                         </div>
-                        <div class="header request-header">request header</div>
-                        <div class="row">
-                            <div class="col-md-3"><input type="text" value="1"></div>
-                            <div class="col-md-1"><input type="text" value="1"></div>
-                            <div class="col-md-6"><input type="text" value="1"></div>
+                    {{/*请求头*/}}
+                        <div class="row header" id="request-header">
+                            <div class="col-md-1"><span class="glyphicon glyphicon-triangle-right title-1"
+                                                        aria-hidden="true"></span></div>
+                            <div class="col-md-4">request header</div>
+                        </div>
+                        <div class="row" id="request-content">
+                            <div class="row" style="margin-left: 15px;">
+                                <div class="col-md-4">key</div>
+                                <div class="col-md-8">value</div>
+                            </div>
+                            <div class="row" style="margin-left: 15px;">
+                                <div class="col-md-4"><input type="text" value="1"></div>
+                                <div class="col-md-8"><input type="text" value="1"></div>
+                            </div>
+                        </div>
+                    {{/*请求体*/}}
+                        <div class="row header" id="request-body">
+                            <div class="col-md-1"><span class="glyphicon glyphicon-triangle-right title-1"
+                                                        aria-hidden="true"></span></div>
+                            <div class="col-md-4">request header</div>
+                        </div>
+                        <div class="row" id="request-body-content">
+                            <div class="row" style="margin-left: 15px;">
+                                <div class="col-md-4">key</div>
+                                <div class="col-md-8">value</div>
+                            </div>
+                            <div class="row" style="margin-left: 15px;">
+                                <div class="col-md-4"><input type="text" value="1"></div>
+                                <div class="col-md-8"><input type="text" value="1"></div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

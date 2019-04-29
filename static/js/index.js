@@ -66,9 +66,10 @@ function sendClick() {
                 // $("#pre").html(body.body);
                 // console.log(body_arrr);
                 console.log(header_arr);
+                $("#response-content").empty("");
                 $.each(header_arr, function (i, val) {
                     var header_content =
-                        '<div class="row">' +
+                        '<div class="row" style="margin-left: 15px;">' +
                         '<div class="col-md-4"> <b>' + i + '</b></div>' +
                         '<div class="col-md-8"> ' + val + '</div>' +
                         '</div>';
