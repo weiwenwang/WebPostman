@@ -12,6 +12,8 @@ $(function () {
                     var body = jQuery.parseJSON(data_string);
                     $("#method").val(body.method);
                     $("#url").val(body.url);
+
+
                     console.log(body)
                 }
             }
@@ -20,7 +22,6 @@ $(function () {
     $(".nav1").click(function () {
         $(this).children("span").toggleClass("glyphicon glyphicon-triangle-bottom");
         $(this).children("span").toggleClass("glyphicon glyphicon-triangle-right");
-
         var a = $(this).siblings("ul");
 
         a.slideToggle(200);
