@@ -2,7 +2,7 @@ $(function () {
     $(".nav3").click(function () {
         $.ajax({
             type: 'get',
-            url: '/urlinfo',
+            url: '/Urlinfo',
             data: {
                 'urlId': 3,
             },
