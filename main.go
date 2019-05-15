@@ -15,7 +15,11 @@ func main() {
 		panic(err)
 	}
 	defer db.Close()
-
+	db.LogMode(true)
+	//
+	//a := Nav2.NavList()
+	//fmt.Println(a)
+	//os.Exit(1)
 	r := gin.Default()
 	r.LoadHTMLGlob("views/**/*")
 	r.Static("/static", "./static")

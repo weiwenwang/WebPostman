@@ -7,21 +7,19 @@ import (
 
 type Url struct {
 	gorm.Model
-	Id        int    `gorm:"id", gorm:"primary_key"`
-	NavId     int    `gorm:"nav_id"`
-	Url       string `gorm:"url"`
-	Request   string `gorm:"request"`
+	NavId      int    `gorm:"column:nav_id"`
+	Url        string `gorm:"url"`
+	Request    string `gorm:"request"`
 	Parameters string `gorm:"parameters"`
-	Response  string `gorm:"response"`
+	Response   string `gorm:"response"`
 }
 
 func (Url) TableName() string {
 	return "url"
 }
 
-func Info(nav_id int) (*Url) {
+func Info(nav_id int) Url {
 	var url Url
 	models.DB.Find(&url, "nav_id = ?", nav_id)
-
-	return &url
+	return url
 }

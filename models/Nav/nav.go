@@ -2,13 +2,14 @@ package Nav
 
 import (
 	"github.com/jinzhu/gorm"
+	"github.com/weiwenwang/WebPostman/models"
+	"fmt"
 )
 
 type Nav struct {
 	gorm.Model
-	Id       int    `gorm:"id"`
-	ParentID int    `gorm:"pid"`
-	Name     string `gorm:"name"`
+	ParentID int    `gorm:"column:pid"`
+	Name     string `gorm:"column:name"`
 	//List     []*Nav `json:"list,omitempty"`
 }
 
@@ -16,26 +17,37 @@ func (Nav) TableName() string {
 	return "nav"
 }
 
-func NavList() []map[string]interface{} {
-	mp5 := makeNav(5, "api", nil)
-	mp6 := makeNav(6, "price", nil)
-	var sub3 []map[string]interface{}
-	mp3 := makeNav(3, "ggstudy", append(sub3, mp5, mp6))
+type Nav_obj struct {
+	Id   uint
+	Name string
+	Sub  []Nav_obj
+}
 
-	mp7 := makeNav(7, "index", nil)
-	var sub4 []map[string]interface{}
-	mp4 := makeNav(4, "common", append(sub4, mp7))
+func NavList() []Nav_obj {
+	var ret []Nav_obj
+	pid0 := Info(0)
+	fmt.Println(pid0)
+	for _, v := range pid0 {
+		sub := doSub(v)
+		for _, sub_v := range Info(v.ID) {
+			sub_sub := doSub(sub_v)
+			for _, sub_sub_v := range Info(sub_v.ID) {
+				third := doSub(sub_sub_v)
+				sub_sub.Sub = append(sub_sub.Sub, third)
+			}
+			sub.Sub = append(sub.Sub, sub_sub)
+		}
+		ret = append(ret, sub)
+	}
+	fmt.Println(ret)
+	return ret
+}
 
-	var sub1 []map[string]interface{}
-	mp1 := makeNav(1, "wochacha", append(sub1, mp3))
-
-	var sub2 []map[string]interface{}
-	mp2 := makeNav(2, "yxpt", append(sub2, mp4))
-
-	var mp0 []map[string]interface{}
-	mp0 = append(mp0, mp1)
-	mp0 = append(mp0, mp2)
-	return mp0
+func doSub(nav Nav) Nav_obj {
+	var sub Nav_obj
+	sub.Id = nav.ID
+	sub.Name = nav.Name
+	return sub
 }
 
 func makeNav(id int32, name string, sub []map[string]interface{}) map[string]interface{} {
@@ -45,4 +57,10 @@ func makeNav(id int32, name string, sub []map[string]interface{}) map[string]int
 		"sub":  sub,
 	}
 	return mp1
+}
+
+func Info(pid uint) ([]Nav) {
+	var navs []Nav
+	models.DB.Find(&navs, "pid = ?", pid)
+	return navs
 }
