@@ -10,6 +10,7 @@ import (
 
 func main() {
 	db, err := models.InitDB()
+	//db.LogMode(true) // 可以用来调试
 	if err != nil {
 		panic(err)
 	}
@@ -24,6 +25,7 @@ func main() {
 
 	r.GET("/urlinfo", controllers.Urlinfo)
 	r.GET("/navlist", Nav.List)
+	r.GET("/navinfo", Nav.Info)
 
 	http.ListenAndServe(":8005", r)
 	r.Run()

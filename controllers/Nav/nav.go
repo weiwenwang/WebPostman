@@ -7,13 +7,6 @@ import (
 	"github.com/weiwenwang/WebPostman/models/Nav"
 )
 
-//type Nav struct {
-//	id   int32
-//	name string
-//
-//	sub  *Nav
-//}
-
 func List(c *gin.Context) {
 	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
 	c.JSON(http.StatusOK, gin.H{

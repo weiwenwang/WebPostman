@@ -19,18 +19,14 @@ func Urlinfo(c *gin.Context) {
 
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
-	fmt.Println()
-
 	fmt.Println(resp.Header);
-	var header []map[string]string
+	var response_header [][]string
 	for k, v := range resp.Header {
-		mp1 := make(map[string]string)
-		mp1["key"] = k
-		mp1["value"] = v[0]
-		header = append(header, mp1)
+		var mp1 []string
+		mp1 = append(mp1, k)
+		mp1 = append(mp1, v[0])
+		response_header = append(response_header, mp1)
 	}
-
-	fmt.Println(header)
 
 	if err != nil {
 
@@ -43,19 +39,19 @@ func Urlinfo(c *gin.Context) {
 	content := make(map[string]interface{})
 	json.Unmarshal(body, &content)
 
-	var param []map[string]string
+	var param [][]string
 	for k, v := range m {
-		mp1 := make(map[string]string)
-		mp1["key"] = k
-		mp1["value"] = v[0]
+		var mp1 []string
+		mp1 = append(mp1, k)
+		mp1 = append(mp1, v[0])
 		param = append(param, mp1)
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"url":        url,
-		"parameters": param,
-		"method":     method,
-		"header":     header,
-		"content":    content,
+		"url":             url,
+		"parameters":      param,
+		"method":          method,
+		"response_header": response_header, // 响应头
+		"content":         content,
 	})
 }

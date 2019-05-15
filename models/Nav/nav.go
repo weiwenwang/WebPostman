@@ -1,9 +1,7 @@
 package Nav
 
 import (
-	"fmt"
 	"github.com/jinzhu/gorm"
-	"github.com/weiwenwang/WebPostman/models"
 )
 
 type Nav struct {
@@ -16,13 +14,6 @@ type Nav struct {
 
 func (Nav) TableName() string {
 	return "nav"
-}
-
-func Info(id int32) (*Nav) {
-	var nav Nav
-	models.DB.Where("id = ?", id).Find(&nav)
-	fmt.Println(nav)
-	return &nav
 }
 
 func NavList() []map[string]interface{} {
