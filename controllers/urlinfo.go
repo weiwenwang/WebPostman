@@ -10,9 +10,9 @@ import (
 )
 
 func Urlinfo(c *gin.Context) {
-	method := c.Query("method")
-	url := c.Query("url")
-	resp, err := http.Get(url)
+	select_host := c.Query("select_host")
+	key := c.Query("key")
+	resp, err := http.Get(key)
 	if err != nil {
 		// handle error
 	}
@@ -33,7 +33,7 @@ func Urlinfo(c *gin.Context) {
 	}
 
 	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
-	u, _ := url2.Parse(url)
+	u, _ := url2.Parse(key)
 	//fmt.Println(u.RawQuery)
 	m, _ := url2.ParseQuery(u.RawQuery)
 	content := make(map[string]interface{})
@@ -49,7 +49,7 @@ func Urlinfo(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{
 		"url":             url,
-		"method":          method,
+		"method":          select_host,
 		"parameters":      param,
 		"response_header": response_header, // 响应头
 		"request_header": response_header, // 响应头

@@ -39,7 +39,7 @@ $(function () {
 
 
 function sendClick() {
-    var method = $("#method").val();
+    var select_host = $("#select_host").val();
     var url = $("#url").val();
 
     $.ajax({
@@ -47,7 +47,7 @@ function sendClick() {
         url: '/receive',
         data: {
             'url': url,
-            'method': method,
+            'select_host': select_host,
         },
         success: function (data, textStatus) {
             if (textStatus == 'success') {
@@ -83,7 +83,7 @@ function sendClick() {
                 }
 
                 var header_content =
-                    '<div class="row" style="margin-left: 15px;">' +
+                    '<div class="row">' +
                     '<div class="col-md-8"> TTL: ' + ttl + ' </div>' +
                     '<div class="col-md-8"> TYPE: ' + type + '</div>' +
                     '<div class="col-md-8"> VALUE: <br>' + body.VALUE + '</div>' +

@@ -149,7 +149,7 @@ input:focus {
     margin-left: 0px;
 }
 
-#search select {
+#select_host {
     width: 10%;
     height: 35px;
     line-height: 35px;
@@ -167,9 +167,28 @@ input:focus {
     /*-webkit-appearance: none;*/
 }
 
+#select_db {
+    width: 5%;
+    height: 35px;
+    line-height: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -khtml-border-radius: 0;
+
+    padding-left: 20px;
+    /*border: 1px;*/
+    /*appearance: none;*/
+    /*background: transparent;*/
+    /*-moz-appearance: none;*/
+    /*-webkit-appearance: none;*/
+}
+
 #search input[type=text] {
     outline: none;
-    width: 80%;
+    width: 70%;
     height: 35px;
     line-height: 35px;
 

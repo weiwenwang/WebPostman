@@ -30,11 +30,17 @@
             </div>
             <div class="col-md-10">
                 <div class="row" id="search">
-                    <select id="method">
+                    <select id="select_host">
                         <option value="1">192.168.1.9</option>
                         <option value="2">127.0.0.11</option>
                     </select>
-                    <input type="text" value="tms_set" id="url">
+                    <select id="select_db">
+                        <option value="1">0</option>
+                        <option value="2">1</option>
+                        <option value="2">2</option>
+                        <option value="2">3</option>
+                    </select>
+                    <input type="text" value="tms_set" id="url" style="padding-left: 5px;">
                     <input type="button" value="send" onclick="sendClick()">
                     {{/*<div class="col-md-2" style="width: 200px;">*/}}
                     {{/*<div id="method-select-div">*/}}
@@ -54,7 +60,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-8" style="overflow: hidden">
-                        <div id="json-renderer" style="padding-left:30px;margin-top: 20px;"></div>
+                        <div id="json-renderer" style="margin-top: 20px;"></div>
                     </div>
 
                     <div class="col-md-4" style="overflow: hidden; margin-top: 20px;">
