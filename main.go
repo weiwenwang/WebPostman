@@ -1,25 +1,18 @@
 package main
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
-	redis2 "github.com/gomodule/redigo/redis"
 	"github.com/weiwenwang/WebRedis/controllers"
 	"github.com/weiwenwang/WebRedis/controllers/Nav"
 	"github.com/weiwenwang/WebRedis/models"
 	"github.com/weiwenwang/WebRedis/redis"
 	"net/http"
-	"strings"
 )
 
 func main() {
 	db, err := models.InitDB()
 	redis.InitRedis()
-	str, _ := redis2.String(redis.Redis_fd.Do("CLIENT", "LIST"))
-	arr := strings.Split(str, "\n")
 
-	//fmt.Println(arr)
-	fmt.Println(len(arr))
 
 	db.LogMode(true) // 可以用来调试
 	if err != nil {
@@ -44,6 +37,7 @@ func main() {
 	r.GET("/", controllers.Index)
 	r.GET("/index", controllers.Index)
 	r.GET("/receive", controllers.Receive)
+	r.GET("/perform", controllers.Perform)
 
 	r.GET("/urlinfo", controllers.Urlinfo)
 	r.GET("/navlist", Nav.List)

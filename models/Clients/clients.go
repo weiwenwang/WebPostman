@@ -9,7 +9,7 @@ import (
 type Cli struct {
 	gorm.Model
 	Id     int
-	Count  string `gorm:"count"`
+	Count  int `gorm:"count"`
 	Delete string `gorm:"DeletedAt"`
 }
 

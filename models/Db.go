@@ -19,6 +19,9 @@ func InitDB() (*gorm.DB, error) {
 
 func AddKeys(key string) {
 	keys = append(keys, key)
+	if (len(keys) > 20) {
+		keys = keys[:20]
+	}
 }
 
 func GetKeys() []string {

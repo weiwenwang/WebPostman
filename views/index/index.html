@@ -1,34 +1,30 @@
 {{define "index/index.html"}}
     {{template "common/header.html"}}
-
     <div class="container-fluid" style="margin-top: 5px;">
         <div class="row">
             <div class="col-md-2" id="left-nav">
                 <ul id="left-menu">
-                    {{range $k, $v := .nav}}
-                        <li>
-                            <a href="#" class="nav1">
-                                <span class="glyphicon glyphicon-triangle-right title-1" aria-hidden="true"></span>
-                                {{$v.Title}}</a>
-                            <ul>
-                                {{range $kk, $vv := $v.Sub}}
-                                    <li>
-                                        <a href="#" class="nav2">
-                                            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
-                                            {{$vv.Title}}</a>
-                                        <ul>
-                                            {{range $kkk, $vvv := $vv.Sub}}
-                                                <li><a href="#" class="nav3" urlId="3"> {{$vvv.Title}}</a></li>
-                                            {{end}}
-                                        </ul>
+                    <li>
+                        <a href="#" class="nav1">
+                            <span class="glyphicon glyphicon-triangle-right title-1" aria-hidden="true"></span>
+                            redis管理</a>
+                        <ul>
+                            <li>
+                                <a href="#" class="nav2">
+                                    <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                                    redis</a>
+                                <ul>
+                                    <li><a href="#" class="nav3" urlId="3" id="nav-search" onclick="sendSearch()">查询</a>
                                     </li>
-                                {{end}}
-                            </ul>
-                        </li>
-                    {{end}}
+                                    <li><a href="#" class="nav3" urlId="3" id="nav-performance"
+                                           onclick="sendPreformance()">性能</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-10" id="nav-search-content">
                 <div class="row" id="search">
                     <select id="select_host">
                         <option value="1">192.168.1.9</option>
@@ -70,6 +66,10 @@
                         {{end}}
                     </div>
                 </div>
+            </div>
+            <div class="col-md-10" id="nav-performance-content">
+                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                <div id="main" style="width: 600px;height:400px;"></div>
             </div>
         </div>
     </div>
