@@ -2,8 +2,8 @@ package Nav
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/weiwenwang/WebRedis/models/Url"
 	"net/http"
-	"github.com/weiwenwang/WebPostman/models/Url"
 	"strconv"
 )
 

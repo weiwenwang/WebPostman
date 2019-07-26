@@ -1,9 +1,9 @@
 package Nav
 
 import (
-	"github.com/jinzhu/gorm"
-	"github.com/weiwenwang/WebPostman/models"
 	"fmt"
+	"github.com/jinzhu/gorm"
+	"github.com/weiwenwang/WebRedis/models"
 )
 
 type Nav struct {

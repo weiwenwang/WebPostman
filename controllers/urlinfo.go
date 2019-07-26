@@ -49,9 +49,10 @@ func Urlinfo(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{
 		"url":             url,
-		"parameters":      param,
 		"method":          method,
+		"parameters":      param,
 		"response_header": response_header, // 响应头
+		"request_header": response_header, // 响应头
 		"content":         content,
 	})
 }

@@ -14,22 +14,22 @@ type Node struct {
 func Index(c *gin.Context) {
 	var fathers []*Node
 	sub_1 := Node{
-		"贴吧",
+		"性能",
 		"https://www.baidu.com",
 		nil,
 	}
 	sub_2 := Node{
-		"知道",
+		"查询",
 		"https://www.baidu.com",
 		nil,
 	}
 	self := Node{
-		"百度",
+		"redis",
 		"https://www.baidu.com",
 		nil,
 	}
 	father := Node{
-		"第一梯度",
+		"redis管理",
 		"https://www.baidu.com",
 		nil,
 	}
@@ -40,7 +40,7 @@ func Index(c *gin.Context) {
 
 	fathers = append(fathers, &father)
 	c.HTML(http.StatusOK, "index/index.html", gin.H{
-		"title": "WebPostman",
+		"title": "WebRedis",
 		"nav":   fathers,
 	})
 }

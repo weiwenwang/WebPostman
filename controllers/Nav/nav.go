@@ -3,8 +3,8 @@ package Nav
 import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"github.com/weiwenwang/WebRedis/models/Nav"
 	"net/http"
-	"github.com/weiwenwang/WebPostman/models/Nav"
 )
 
 func List(c *gin.Context) {

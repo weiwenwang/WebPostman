@@ -2,7 +2,7 @@ package Url
 
 import (
 	"github.com/jinzhu/gorm"
-	"github.com/weiwenwang/WebPostman/models"
+	"github.com/weiwenwang/WebRedis/models"
 )
 
 type Url struct {

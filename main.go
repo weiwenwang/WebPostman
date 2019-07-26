@@ -1,21 +1,39 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/weiwenwang/WebPostman/controllers"
-	"github.com/weiwenwang/WebPostman/controllers/Nav"
+	redis2 "github.com/gomodule/redigo/redis"
+	"github.com/weiwenwang/WebRedis/controllers"
+	"github.com/weiwenwang/WebRedis/controllers/Nav"
+	"github.com/weiwenwang/WebRedis/models"
+	"github.com/weiwenwang/WebRedis/redis"
 	"net/http"
-	"github.com/weiwenwang/WebPostman/models"
+	"strings"
 )
 
 func main() {
 	db, err := models.InitDB()
-	//db.LogMode(true) // 可以用来调试
+	redis.InitRedis()
+	str, _ := redis2.String(redis.Redis_fd.Do("CLIENT", "LIST"))
+	arr := strings.Split(str, "\n")
+
+	//fmt.Println(arr)
+	fmt.Println(len(arr))
+
+	db.LogMode(true) // 可以用来调试
 	if err != nil {
 		panic(err)
 	}
-	defer db.Close()
-	db.LogMode(true)
+
+	//ret, err := Clients.Info()
+	//fmt.Println(ret)
+	//for _, v := range (ret) {
+	//	fmt.Println(v.Count)
+	//}
+
+	//defer db.Close()
+	//db.LogMode(true)
 	//
 	//a := Nav2.NavList()
 	//fmt.Println(a)
