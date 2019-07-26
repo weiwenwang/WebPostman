@@ -40,7 +40,7 @@
                         <option value="2">2</option>
                         <option value="2">3</option>
                     </select>
-                    <input type="text" value="tms_set" id="url" style="padding-left: 5px;">
+                    <input type="text" value="tms_set" id="key" style="padding-left: 5px;">
                     <input type="button" value="send" onclick="sendClick()">
                     {{/*<div class="col-md-2" style="width: 200px;">*/}}
                     {{/*<div id="method-select-div">*/}}
@@ -65,10 +65,9 @@
 
                     <div class="col-md-4" style="overflow: hidden; margin-top: 20px;">
                         <h1>histroy</h1>
-
-                        <div>sdlfja</div>
-                        <div>sdlfja</div>
-                        <div>sdlfja</div>
+                        {{range $k, $v := .keys}}
+                            <div>{{$v}}</div>
+                        {{end}}
                     </div>
                 </div>
             </div>

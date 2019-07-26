@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	redis2 "github.com/gomodule/redigo/redis"
 	"github.com/weiwenwang/WebRedis/common"
+	"github.com/weiwenwang/WebRedis/models"
 	"github.com/weiwenwang/WebRedis/redis"
 	"net/http"
 	"strconv"
@@ -22,6 +23,7 @@ func Receive(c *gin.Context) {
 	if (b == "string") {
 		value, _ := redis2.String(redis.Redis_fd.Do("GET", key))
 		fmt.Println("ttl", ttl)
+		models.AddKeys(key)
 		c.JSON(http.StatusOK, gin.H{
 			"TYPE":  common.STRING,
 			"VALUE": value,
@@ -32,6 +34,7 @@ func Receive(c *gin.Context) {
 		value, _ := redis2.Strings(redis.Redis_fd.Do("SMEMBERS", key))
 		fmt.Println(value)
 		fmt.Println("ttl", ttl)
+		models.AddKeys(key)
 		c.JSON(http.StatusOK, gin.H{
 			"TYPE":  common.SET,
 			"VALUE": value,
@@ -44,6 +47,7 @@ func Receive(c *gin.Context) {
 		fmt.Println(value)
 		fmt.Println("ttl", ttl)
 		fmt.Println("len", len)
+		models.AddKeys(key)
 		c.JSON(http.StatusOK, gin.H{
 			"TYPE":  common.LIST,
 			"VALUE": value,
@@ -63,6 +67,7 @@ func Receive(c *gin.Context) {
 			}
 		}
 		fmt.Println("ttl", ttl)
+		models.AddKeys(key)
 		c.JSON(http.StatusOK, gin.H{
 			"TYPE":  common.HASH,
 			"VALUE": ret_str,
@@ -81,6 +86,7 @@ func Receive(c *gin.Context) {
 				ret_str += v + ":"
 			}
 		}
+		models.AddKeys(key)
 		c.JSON(http.StatusOK, gin.H{
 			"TYPE":  common.ZSET,
 			"VALUE": ret_str,

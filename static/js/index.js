@@ -40,13 +40,13 @@ $(function () {
 
 function sendClick() {
     var select_host = $("#select_host").val();
-    var url = $("#url").val();
+    var key = $("#key").val();
 
     $.ajax({
         type: 'get',
         url: '/receive',
         data: {
-            'url': url,
+            'key': key,
             'select_host': select_host,
         },
         success: function (data, textStatus) {

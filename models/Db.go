@@ -5,6 +5,7 @@ import (
 )
 
 var DB *gorm.DB
+var keys []string
 
 func InitDB() (*gorm.DB, error) {
 	db, err := gorm.Open("mysql", "root:WOAImama188@/webRedis?charset=utf8&parseTime=True&loc=Local")
@@ -14,4 +15,12 @@ func InitDB() (*gorm.DB, error) {
 	}
 
 	return nil, err
+}
+
+func AddKeys(key string) {
+	keys = append(keys, key)
+}
+
+func GetKeys() []string {
+	return keys
 }
